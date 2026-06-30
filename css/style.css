@@ -204,6 +204,11 @@ footer a {
     text-decoration: none;
 }
 
+#link-admin {
+    left: 3rem;
+    right: auto;
+}
+
 footer a:hover {
     color: rgba(245, 245, 245, 0.8);
 }
