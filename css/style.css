@@ -382,3 +382,161 @@ form {
     color: rgba(245, 245, 245, 0.75);
     margin-bottom: 1.5rem;
 }
+
+/* Painel de Administrador */
+
+#cabecalho-admin {
+    text-align: center;
+    padding-top: 3rem;
+}
+
+#cabecalho-admin h1 {
+    font-size: 280%;
+}
+
+#cabecalho-admin .subtitulo-admin {
+    font-size: 90%;
+    color: rgba(245, 245, 245, 0.45);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+#secao-painel {
+    width: 60%;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+#secao-painel .boas-vindas {
+    font-size: 115%;
+    color: rgba(245, 245, 245, 0.6);
+    margin-bottom: 3rem;
+}
+
+#menu-admin {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.cartao-admin {
+    display: block;
+    width: 280px;
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(245, 245, 245, 0.2);
+    text-decoration: none;
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.cartao-admin:hover {
+    border-color: rgba(245, 245, 245, 0.6);
+    background-color: rgba(245, 245, 245, 0.03);
+}
+
+.cartao-admin h2 {
+    font-size: 150%;
+    font-weight: 400;
+    color: rgba(245, 245, 245, 0.9);
+    margin: 0 0 1rem 0;
+    letter-spacing: 0.05em;
+}
+
+.cartao-admin p {
+    font-size: 95%;
+    color: rgba(245, 245, 245, 0.45);
+    line-height: 1.6;
+}
+
+#link-logout {
+    display: inline-block;
+    margin-top: 4rem;
+    font-size: 90%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245, 245, 245, 0.4);
+    text-decoration: none;
+}
+
+#link-logout:hover {
+    color: rgba(245, 245, 245, 0.8);
+}
+
+/* Login e Cadastro */
+
+.pagina-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#secao-auth {
+    width: 320px;
+}
+
+#secao-auth h1 {
+    font-size: 220%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+#secao-auth p.subtitulo {
+    text-align: center;
+    font-size: 90%;
+    color: rgba(245, 245, 245, 0.45);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+}
+
+#secao-auth p.mensagem-erro {
+    color: rgba(220, 80, 80, 0.85);
+    text-align: center;
+    font-size: 90%;
+    margin-bottom: 1.5rem;
+}
+
+#secao-auth p.mensagem-sucesso {
+    color: rgba(245, 245, 245, 0.9);
+    text-align: center;
+    font-size: 90%;
+    margin-bottom: 1.5rem;
+}
+
+.botao-formulario {
+    margin-top: 1rem;
+    background: transparent;
+    border: 1px solid rgba(245, 245, 245, 0.3);
+    color: rgba(245, 245, 245, 0.7);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 105%;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botao-formulario:hover {
+    border-color: rgba(245, 245, 245, 0.8);
+    color: rgba(245, 245, 245, 0.95);
+}
+
+#secao-auth .rodape-auth {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 90%;
+    color: rgba(245, 245, 245, 0.4);
+}
+
+#secao-auth .rodape-auth a {
+    color: rgba(245, 245, 245, 0.75);
+    text-decoration: none;
+}
+
+#secao-auth .rodape-auth a:hover {
+    color: rgba(245, 245, 245, 0.95);
+}
