@@ -464,13 +464,16 @@ form {
     color: rgba(245, 245, 245, 0.8);
 }
 
+#secao-painel {
+    width: 60%;
+    margin: 15rem auto 14rem auto;
+}
+
 /* Login e Cadastro */
 
-.pagina-auth {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+#secao-auth {
+    width: 320px;
+    margin: 16rem auto 14rem auto;
 }
 
 #secao-auth {
@@ -539,4 +542,11 @@ form {
 
 #secao-auth .rodape-auth a:hover {
     color: rgba(245, 245, 245, 0.95);
+}
+
+/* Título clicável nas páginas de administrador. */
+#cabecalho-admin h1 a,
+#secao-auth h1 a {
+    color: inherit;
+    text-decoration: none;
 }

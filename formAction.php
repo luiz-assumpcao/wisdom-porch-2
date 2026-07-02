@@ -1,10 +1,24 @@
 <?php
 session_start();
+require 'bd/bd.php';
 
 $nome = $_SESSION['nome'] ?? '';
 $email = $_SESSION['email'] ?? '';
 $dataNascimento = $_SESSION['dataNascimento'] ?? '';
-$escolaFavorita = $_SESSION['escolaFavorita'] ?? '';
+$idEscolaFavorita = $_SESSION['escolaFavorita'] ?? '';
+
+$nomeEscola = '';
+
+if ($idEscolaFavorita !== '') {
+    $idEscolaEscapado = $conexao->real_escape_string($idEscolaFavorita);
+    $sqlEscola = "SELECT nome_escola FROM escola WHERE id = '$idEscolaEscapado'";
+    $resultadoEscola = $conexao->query($sqlEscola);
+
+    if ($resultadoEscola && $resultadoEscola->num_rows === 1) {
+        $linhaEscola = $resultadoEscola->fetch_assoc();
+        $nomeEscola = $linhaEscola['nome_escola'];
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,7 +57,7 @@ $escolaFavorita = $_SESSION['escolaFavorita'] ?? '';
             </div>
             <div class="dado-recebido">
                 <span class="dado-label">Favorite School</span>
-                <span><?php echo $escolaFavorita; ?></span>
+                <span><?php echo htmlspecialchars($nomeEscola); ?></span>
             </div>
         </section>
     </main>

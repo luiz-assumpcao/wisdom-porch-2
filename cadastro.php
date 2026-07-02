@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="pagina-auth">
     <main>
         <section id="secao-auth">
-            <h1>Wisdom Porch</h1>
+            <h1><a href="index.php">Wisdom Porch</a></h1>
             <p class="subtitulo">Create Administrator Account</p>
 
             <?php if ($mensagemErro !== ''): ?>
@@ -77,6 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </p>
         </section>
     </main>
+    <footer>
+        <p>© 2026 Wisdom Porch</p>
+    </footer>
 </body>
 
 </html>

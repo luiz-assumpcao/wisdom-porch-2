@@ -19,7 +19,7 @@ if (!isset($_SESSION['login'])) {
 
 <body>
     <header id="cabecalho-admin">
-        <h1>Wisdom Porch</h1>
+        <h1><a href="index.php">Wisdom Porch</a></h1>
         <p class="subtitulo-admin">Administrator Panel</p>
     </header>
     <main>

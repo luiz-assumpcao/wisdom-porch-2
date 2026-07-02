@@ -8,16 +8,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $dataNascimento = trim($_POST['data-nascimento'] ?? '');
-    $escolaFavorita = trim($_POST['escola-favorita'] ?? '');
+    $idEscola = trim($_POST['escola-favorita'] ?? '');
 
-    if ($nome !== '' && $email !== '' && $dataNascimento !== '') {
-        $_SESSION['nome'] = htmlspecialchars($nome);
-        $_SESSION['email'] = htmlspecialchars($email);
-        $_SESSION['dataNascimento'] = htmlspecialchars($dataNascimento);
-        $_SESSION['escolaFavorita'] = htmlspecialchars($escolaFavorita);
+    if ($nome !== '' && $email !== '' && $dataNascimento !== '' && $idEscola !== '') {
+        require_once 'bd/bd.php';
 
-        $mensagem = 'Your subscription has been confirmed!';
-        $classeMensagem = 'mensagem-sucesso';
+        $nomeEscapado = $conexao->real_escape_string($nome);
+        $emailEscapado = $conexao->real_escape_string($email);
+        $dataEscapada = $conexao->real_escape_string($dataNascimento);
+        $idEscolaEscapado = $conexao->real_escape_string($idEscola);
+
+        $sqlInsere = "INSERT INTO assinante (nome, email, data_nascimento, id_escola)
+                      VALUES ('$nomeEscapado', '$emailEscapado', '$dataEscapada', '$idEscolaEscapado')";
+
+        if ($conexao->query($sqlInsere) === TRUE) {
+            $_SESSION['nome'] = htmlspecialchars($nome);
+            $_SESSION['email'] = htmlspecialchars($email);
+            $_SESSION['dataNascimento'] = htmlspecialchars($dataNascimento);
+            $_SESSION['escolaFavorita'] = $idEscolaEscapado;
+
+            $mensagem = 'Your subscription has been confirmed!';
+            $classeMensagem = 'mensagem-sucesso';
+        } else {
+            $mensagem = 'Something went wrong, please try again.';
+            $classeMensagem = 'mensagem-erro';
+        }
     } else {
         $mensagem = 'Please fill in all fields correctly.';
         $classeMensagem = 'mensagem-erro';
@@ -64,11 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="campo-formulario">
                     <label for="form-escola-favorita">Favorite School of Thought</label>
                     <select name="escola-favorita" id="form-escola-favorita">
-                        <option value="estoicismo">Stoicism</option>
-                        <option value="existencialismo">Existentialism</option>
-                        <option value="ceticismo">Skepticism</option>
-                        <option value="niilismo">Nihilism</option>
-                        <option value="outro">Other</option>
+                        <?php
+                        require 'bd/bd.php';
+                        $sqlEscolas = "SELECT id, nome_escola FROM escola ORDER BY id";
+                        $resultadoEscolas = $conexao->query($sqlEscolas);
+                        while ($linhaEscola = $resultadoEscolas->fetch_assoc()) {
+                        ?>
+                            <option value="<?php echo $linhaEscola['id']; ?>">
+                                <?php echo htmlspecialchars($linhaEscola['nome_escola']); ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
                     </select>
                 </div>
                 <button id="botao-subscribe" type="submit">Subscribe</button>
