@@ -9,7 +9,7 @@ if (isset($_SESSION['login'])) {
 $mensagemErro = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require 'bd/bd.php';
+    require '../bd/bd.php';
 
     $login = $conexao->real_escape_string(trim($_POST['login'] ?? ''));
     $senha = $conexao->real_escape_string(trim($_POST['senha'] ?? ''));
@@ -34,15 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" type="image/x-icon" href="img/favicon.png.png" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png.png" />
     <title>Admin Login</title>
 </head>
 
 <body class="pagina-auth">
     <main>
         <section id="secao-auth">
-            <h1><a href="index.php">Wisdom Porch</a></h1>
+            <h1><a href="../index.php">Wisdom Porch</a></h1>
             <p class="subtitulo">Administrator Access</p>
 
             <?php if ($mensagemErro !== ''): ?>
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <footer>
         <p>© 2026 Wisdom Porch</p>
     </footer>
-    <script src="script/auth.js"></script>
+    <script src="../script/auth.js"></script>
 </body>
 
 </html>

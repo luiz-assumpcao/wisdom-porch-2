@@ -88,7 +88,7 @@ session_start();
     </section>
   </main>
   <footer>
-    <a id="link-admin" href="login.php">Admin</a>
+    <a id="link-admin" href="admin/login.php">Admin</a>
     <p>© 2026 Wisdom Porch</p>
     <a href="formAction.php">Form Data</a>
   </footer>
