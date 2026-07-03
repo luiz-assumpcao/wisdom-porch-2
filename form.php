@@ -7,23 +7,29 @@ $classeMensagem = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
     $email = trim($_POST['email'] ?? '');
+    $telefone = trim($_POST['telefone'] ?? '');
     $dataNascimento = trim($_POST['data-nascimento'] ?? '');
     $idEscola = trim($_POST['escola-favorita'] ?? '');
 
-    if ($nome !== '' && $email !== '' && $dataNascimento !== '' && $idEscola !== '') {
+    if ($nome !== '' && $email !== '' && $telefone !== '' && $dataNascimento !== '' && $idEscola !== '') {
         require_once 'bd/bd.php';
 
-        $nomeEscapado = $conexao->real_escape_string($nome);
+        $primeiroNome = preg_split('/\s+/', trim($nome))[0];
+        $telefoneDigitos = preg_replace('/\D/', '', $telefone);
+
+        $nomeEscapado = $conexao->real_escape_string($primeiroNome);
         $emailEscapado = $conexao->real_escape_string($email);
+        $telefoneEscapado = $conexao->real_escape_string($telefoneDigitos);
         $dataEscapada = $conexao->real_escape_string($dataNascimento);
         $idEscolaEscapado = $conexao->real_escape_string($idEscola);
 
-        $sqlInsere = "INSERT INTO assinante (nome, email, data_nascimento, id_escola)
-                      VALUES ('$nomeEscapado', '$emailEscapado', '$dataEscapada', '$idEscolaEscapado')";
+        $sqlInsere = "INSERT INTO assinante (primeiro_nome, email, telefone, data_nascimento, id_escola)
+                  VALUES ('$nomeEscapado', '$emailEscapado', '$telefoneEscapado', '$dataEscapada', '$idEscolaEscapado')";
 
         if ($conexao->query($sqlInsere) === TRUE) {
             $_SESSION['nome'] = htmlspecialchars($nome);
             $_SESSION['email'] = htmlspecialchars($email);
+            $_SESSION['telefone'] = htmlspecialchars($telefone);
             $_SESSION['dataNascimento'] = htmlspecialchars($dataNascimento);
             $_SESSION['escolaFavorita'] = $idEscolaEscapado;
 
@@ -66,11 +72,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form id="form-newsletter" action="form.php" method="post">
                 <div class="campo-formulario">
                     <label for="form-nome">Name</label>
-                    <input type="text" name="nome" id="form-nome" placeholder="First name" maxlength="30" required />
+                    <input type="text" name="nome" id="form-nome" placeholder="First name" maxlength="30"
+                        pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,30}" required />
                 </div>
                 <div class="campo-formulario">
                     <label for="form-email">Email</label>
                     <input type="email" name="email" id="form-email" placeholder="youremail@gmail.com" maxlength="40" required />
+                </div>
+                <div class="campo-formulario">
+                    <label for="form-telefone">Phone</label>
+                    <input type="tel" name="telefone" id="form-telefone" placeholder="+55 41 987798848" maxlength="18"
+                        pattern="\+55 \d{2} \d{8,9}" required />
                 </div>
                 <div class="campo-formulario">
                     <label for="form-data-nascimento">Date of Birth</label>

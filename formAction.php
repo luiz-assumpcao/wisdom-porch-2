@@ -4,6 +4,7 @@ require 'bd/bd.php';
 
 $nome = $_SESSION['nome'] ?? '';
 $email = $_SESSION['email'] ?? '';
+$telefone = $_SESSION['telefone'] ?? '';
 $dataNascimento = $_SESSION['dataNascimento'] ?? '';
 $idEscolaFavorita = $_SESSION['escolaFavorita'] ?? '';
 
@@ -50,6 +51,10 @@ if ($idEscolaFavorita !== '') {
             <div class="dado-recebido">
                 <span class="dado-label">Email</span>
                 <span><?php echo $email; ?></span>
+            </div>
+            <div class="dado-recebido">
+                <span class="dado-label">Phone</span>
+                <span><?php echo $telefone; ?></span>
             </div>
             <div class="dado-recebido">
                 <span class="dado-label">Birthdate</span>
