@@ -1,4 +1,5 @@
-/* Define estilos globais da página: cor do texto, fundo, fonte e remove margens padrão do navegador */
+/* Global. (Site Inteiro) */
+
 body {
     color: white;
     background-color: black;
@@ -7,7 +8,6 @@ body {
     padding: 0%;
 }
 
-/* Camada de fundo do site: exibe a imagem do Sócrates em preto e branco */
 body::before {
     background-image: url(../img/socrates-background.png);
     background-repeat: no-repeat;
@@ -23,7 +23,6 @@ body::before {
     filter: grayscale();
 }
 
-/* Camada semi-transparente sobre a imagem para destacar o conteúdo */
 body::after {
     content: '';
     position: fixed;
@@ -35,7 +34,6 @@ body::after {
     z-index: -1;
 }
 
-/* Define o tamanho e a cor do título principal do site */
 h1 {
     font-size: 360%;
     margin: 0;
@@ -46,7 +44,6 @@ p {
     margin: 0;
 }
 
-/* Define o layout do menu: flex vertical, centralizado, com altura de um terço da tela */
 nav {
     position: relative;
     display: flex;
@@ -63,7 +60,6 @@ nav a {
     text-decoration: none;
 }
 
-/* Exibe os itens do menu lado a lado com espaçamento entre eles */
 nav ul {
     display: flex;
     list-style: none;
@@ -75,7 +71,39 @@ main {
     padding-top: 0.5rem;
 }
 
-/* Seção de abas filosóficas */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-top: 1px solid rgba(245, 245, 245, 0.2);
+    position: relative;
+}
+
+footer p {
+    font-size: 90%;
+    color: rgba(245, 245, 245, 0.4);
+}
+
+footer a {
+    position: absolute;
+    right: 3rem;
+    font-size: 90%;
+    color: rgba(245, 245, 245, 0.4);
+    text-decoration: none;
+}
+
+#link-admin {
+    left: 3rem;
+    right: auto;
+}
+
+footer a:hover {
+    color: rgba(245, 245, 245, 0.8);
+}
+
+/* Home. */
+
 #secao-abas {
     width: 50%;
     margin: 6rem auto;
@@ -121,7 +149,6 @@ main {
     color: rgba(245, 245, 245, 0.8);
 }
 
-/* Seção dos retratos dos filósofos */
 #secao-filosofos {
     display: flex;
     justify-content: center;
@@ -167,7 +194,6 @@ main {
     letter-spacing: 0.05em;
 }
 
-/* Seção de descrição do filósofo selecionado */
 #secao-descricao-filosofo {
     width: 50%;
     margin: 0 auto 6rem auto;
@@ -181,71 +207,32 @@ main {
     color: rgba(245, 245, 245, 0.75);
 }
 
-/* Rodapé transparente com copyright e link para form action */
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem 3rem;
-    border-top: 1px solid rgba(245, 245, 245, 0.2);
-    position: relative;
-}
+/* About. */
 
-footer p {
-    font-size: 90%;
-    color: rgba(245, 245, 245, 0.4);
-}
-
-footer a {
-    position: absolute;
-    right: 3rem;
-    font-size: 90%;
-    color: rgba(245, 245, 245, 0.4);
-    text-decoration: none;
-}
-
-#link-admin {
-    left: 3rem;
-    right: auto;
-}
-
-footer a:hover {
-    color: rgba(245, 245, 245, 0.8);
-}
-
-/* Newsletter */
-
-#secao-formulario {
-    width: 35%;
+.sobre-nos {
+    width: 50%;
     margin: 0 auto;
     margin-bottom: 6rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(245, 245, 245, 0.2);
 }
 
-#secao-formulario h2 {
+.sobre-nos h2 {
     font-size: 200%;
     font-weight: 400;
     color: rgba(245, 245, 245, 0.9);
-    color: rgba(245, 245, 245, 0.9);
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 2rem 0;
     letter-spacing: 0.05em;
 }
 
-#secao-formulario p {
-    font-size: 105%;
-    color: rgba(245, 245, 245, 0.45);
-    margin-bottom: 3rem;
-    line-height: 1.6;
+.sobre-nos p {
+    font-size: 110%;
+    line-height: 1.8;
+    color: rgba(245, 245, 245, 0.75);
+    margin-bottom: 1.5rem;
 }
 
-#secao-formulario p.mensagem-erro {
-    color: rgba(220, 80, 80, 0.85);
-}
-
-#secao-formulario p.mensagem-sucesso {
-    color: rgba(245, 245, 245, 0.9);
-}
+/* Newsletter, Login e Cadastro. (Campos de formulário) */
 
 form {
     display: flex;
@@ -293,11 +280,92 @@ form {
     color: white;
 }
 
-/* Remove o estilo padrão do calendário no input date */
 .campo-formulario input[type='date']::-webkit-calendar-picker-indicator {
     filter: invert(1);
     opacity: 0.3;
     cursor: pointer;
+}
+
+.botao-formulario {
+    margin-top: 1rem;
+    background: transparent;
+    border: 1px solid rgba(245, 245, 245, 0.3);
+    color: rgba(245, 245, 245, 0.7);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 105%;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botao-formulario:hover {
+    border-color: rgba(245, 245, 245, 0.8);
+    color: rgba(245, 245, 245, 0.95);
+}
+
+.input-com-icone {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-com-icone input {
+    width: 100%;
+    padding-right: 2rem;
+}
+
+/* Ícone do Olho */
+.icone-olho {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    user-select: none;
+    font-size: 90%;
+    opacity: 0.6;
+    color: rgba(245, 245, 245, 0.4);
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.icone-olho:hover {
+    opacity: 1;
+    color: rgba(245, 245, 245, 0.8);
+}
+
+/* Newsletter. */
+
+#secao-formulario {
+    width: 35%;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245, 245, 245, 0.2);
+}
+
+#secao-formulario h2 {
+    font-size: 200%;
+    font-weight: 400;
+    color: rgba(245, 245, 245, 0.9);
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0.05em;
+}
+
+#secao-formulario p {
+    font-size: 105%;
+    color: rgba(245, 245, 245, 0.45);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+#secao-formulario p.mensagem-erro {
+    color: rgba(220, 80, 80, 0.85);
+}
+
+#secao-formulario p.mensagem-sucesso {
+    color: rgba(245, 245, 245, 0.9);
 }
 
 #botao-subscribe {
@@ -320,7 +388,7 @@ form {
     color: rgba(245, 245, 245, 0.95);
 }
 
-/* Form Action */
+/* Form Action. */
 
 #secao-dados {
     width: 35%;
@@ -358,32 +426,7 @@ form {
     color: rgba(245, 245, 245, 0.85);
 }
 
-/* About Us */
-
-.sobre-nos {
-    width: 50%;
-    margin: 0 auto;
-    margin-bottom: 6rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(245, 245, 245, 0.2);
-}
-
-.sobre-nos h2 {
-    font-size: 200%;
-    font-weight: 400;
-    color: rgba(245, 245, 245, 0.9);
-    margin: 0 0 2rem 0;
-    letter-spacing: 0.05em;
-}
-
-.sobre-nos p {
-    font-size: 110%;
-    line-height: 1.8;
-    color: rgba(245, 245, 245, 0.75);
-    margin-bottom: 1.5rem;
-}
-
-/* Painel de Administrador */
+/* Painel Administrativo. */
 
 #cabecalho-admin {
     text-align: center;
@@ -465,7 +508,7 @@ form {
     color: rgba(245, 245, 245, 0.8);
 }
 
-/* Login e Cadastro */
+/* Login e Cadastro. */
 
 #secao-auth {
     width: 320px;
@@ -501,25 +544,6 @@ form {
     margin-bottom: 1.5rem;
 }
 
-.botao-formulario {
-    margin-top: 1rem;
-    background: transparent;
-    border: 1px solid rgba(245, 245, 245, 0.3);
-    color: rgba(245, 245, 245, 0.7);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 105%;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.8rem 2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.botao-formulario:hover {
-    border-color: rgba(245, 245, 245, 0.8);
-    color: rgba(245, 245, 245, 0.95);
-}
-
 #secao-auth .rodape-auth {
     margin-top: 2rem;
     text-align: center;
@@ -536,48 +560,9 @@ form {
     color: rgba(245, 245, 245, 0.95);
 }
 
-/* Título clicável nas páginas de administrador. */
+/* Título clicável. */
 #cabecalho-admin h1 a,
 #secao-auth h1 a {
     color: inherit;
     text-decoration: none;
-}
-
-.input-com-icone {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-com-icone input {
-    width: 100%;
-    padding-right: 2rem;
-}
-
-.icone-olho {
-    position: absolute;
-    right: 0;
-    cursor: pointer;
-    user-select: none;
-    font-size: 90%;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-
-.icone-olho:hover {
-    opacity: 1;
-}
-
-.icone-olho {
-    position: absolute;
-    right: 0;
-    cursor: pointer;
-    color: rgba(245, 245, 245, 0.4);
-    display: flex;
-    align-items: center;
-    transition: color 0.3s ease;
-}
-
-.icone-olho:hover {
-    color: rgba(245, 245, 245, 0.8);
 }
