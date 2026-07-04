@@ -18,7 +18,7 @@ if (!isset($_SESSION['login'])) {
 </head>
 
 <body>
-    <header id="cabecalho-admin">
+    <header class="cabecalho-listagem">
         <h1><a href="../index.php">Wisdom Porch</a></h1>
         <p class="subtitulo-admin">Administrator Panel</p>
     </header>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['login'])) {
                 </a>
             </div>
 
-            <a href="logout.php" id="link-logout">Log Out</a>
+            <a href="logout.php" class="botao-formulario botao-logout">Log Out</a>
         </section>
     </main>
     <footer>

@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="campo-formulario">
                     <label for="form-telefone">Phone</label>
-                    <input type="tel" name="telefone" id="form-telefone" placeholder="+55 41 987798848" maxlength="18"
+                    <input type="tel" name="telefone" id="form-telefone" placeholder="+55 41 987879898" maxlength="18"
                         pattern="\+55 \d{2} \d{8,9}" required />
                 </div>
                 <div class="campo-formulario">
@@ -93,7 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <select name="escola-favorita" id="form-escola-favorita">
                         <?php
                         require 'bd/bd.php';
-                        $sqlEscolas = "SELECT id, nome_escola FROM escola ORDER BY id";
+                        $sqlEscolas = "SELECT id, nome_escola FROM escola
+                   ORDER BY (nome_escola = 'Other') ASC, nome_escola ASC";
                         $resultadoEscolas = $conexao->query($sqlEscolas);
                         while ($linhaEscola = $resultadoEscolas->fetch_assoc()) {
                         ?>
