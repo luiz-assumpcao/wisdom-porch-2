@@ -120,7 +120,7 @@ if ($acao === 'listar') {
                 <div class="container-tabela">
                     <?php if ($acao === 'criar' || $acao === 'editar'): ?>
                         <div class="formulario-crud">
-                            <a href="assinantes.php" class="link-voltar-formulario" aria-label="Back to list">
+                            <a href="escolas.php" class="link-voltar-formulario" aria-label="Back to list">
                                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M9 14 4 9l5-5" />
                                     <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" />
@@ -157,7 +157,7 @@ if ($acao === 'listar') {
                         </div>
                     <?php elseif ($acao === 'excluir' && $registro): ?>
                         <div class="formulario-crud">
-                            <a href="assinantes.php" class="link-voltar-formulario" aria-label="Back to list">
+                            <a href="escolas.php" class="link-voltar-formulario" aria-label="Back to list">
                                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M9 14 4 9l5-5" />
                                     <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" />
