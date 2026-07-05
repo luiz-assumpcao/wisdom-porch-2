@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Admin Login</title>
 </head>
 
-<body class="pagina-auth">
+<body class="pagina-auth pagina-admin">
     <main>
         <section id="secao-auth">
             <h1><a href="../index.php">Wisdom Porch</a></h1>

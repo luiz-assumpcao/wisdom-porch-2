@@ -298,6 +298,8 @@ form {
     padding: 0.8rem 2rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .botao-formulario:hover {
@@ -448,7 +450,6 @@ form {
 
 #secao-painel {
     width: 60%;
-    margin: 8rem auto 17rem auto;
     text-align: center;
 }
 
@@ -512,7 +513,6 @@ form {
 
 #secao-auth {
     width: 320px;
-    margin: 16rem auto 14rem auto;
 }
 
 #secao-auth h1 {
@@ -660,10 +660,8 @@ form {
 /* Telas de CRUD. */
 
 .layout-listagem {
-    display: flex;
-    width: 90%;
-    margin: 3rem auto 14rem auto;
-    gap: 2rem;
+    position: relative;
+    width: 100%;
 }
 
 .secao-estatisticas {
@@ -869,7 +867,6 @@ th[data-tipo] {
     padding: 1.5rem 2rem;
     background-color: rgba(245, 245, 245, 0.05);
     text-align: center;
-    text-decoration: none;
     margin: 2rem auto 0 auto;
 }
 
@@ -901,4 +898,70 @@ th[data-tipo] {
     white-space: nowrap;
     padding: 0.6rem 1.5rem;
     font-size: 90%;
+}
+
+.pagina-admin {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.pagina-admin main {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario-crud {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+.formulario-crud .campo-formulario {
+    width: 400px;
+}
+
+.valor-exclusao {
+    font-size: 115%;
+    color: rgba(245, 245, 245, 0.85);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(245, 245, 245, 0.25);
+    margin: 0;
+}
+
+.acoes-formulario {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.botao-excluir-confirmar:hover {
+    border-color: rgba(220, 80, 80, 0.85);
+    color: rgba(220, 80, 80, 0.85);
+}
+
+.acoes-formulario .botao-formulario {
+    min-width: 140px;
+    text-align: center;
+}
+
+.formulario-crud {
+    position: relative;
+    padding-top: 3.5rem;
+}
+
+.link-voltar-formulario {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    color: rgba(245, 245, 245, 0.4);
+    transition: color 0.3s ease;
+}
+
+.link-voltar-formulario:hover {
+    color: rgba(245, 245, 245, 0.8);
 }

@@ -64,6 +64,28 @@ function ordenarTabela(th) {
     }
 }
 
+function confirmarEnvio(formulario, mensagem) {
+    if (confirm(mensagem)) {
+        formulario.submit();
+    }
+}
+
+function aplicarMascaraTelefoneAdmin(campo) {
+    let digitos = campo.value.replace(/\D/g, '');
+    digitos = digitos.substring(0, 13);
+
+    const codigoPais = digitos.substring(0, 2);
+    const ddd = digitos.substring(2, 4);
+    const numero = digitos.substring(4);
+
+    let formatado = '';
+    if (codigoPais) formatado += '+' + codigoPais;
+    if (ddd) formatado += ' ' + ddd;
+    if (numero) formatado += ' ' + numero;
+
+    campo.value = formatado;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('table').forEach(function (tabela) {
         const tbody = tabela.querySelector('tbody');
@@ -78,4 +100,12 @@ document.addEventListener('DOMContentLoaded', function () {
             ordenarTabela(th);
         });
     });
+
+    const campoTelefoneCrud = document.getElementById('campo-telefone-crud');
+    if (campoTelefoneCrud) {
+        aplicarMascaraTelefoneAdmin(campoTelefoneCrud);
+        campoTelefoneCrud.addEventListener('input', function () {
+            aplicarMascaraTelefoneAdmin(campoTelefoneCrud);
+        });
+    }
 });

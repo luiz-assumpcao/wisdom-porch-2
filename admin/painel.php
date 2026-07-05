@@ -17,7 +17,7 @@ if (!isset($_SESSION['login'])) {
     <title>Admin Panel</title>
 </head>
 
-<body>
+<body class="pagina-admin">
     <header class="cabecalho-listagem">
         <h1><a href="../index.php">Wisdom Porch</a></h1>
         <p class="subtitulo-admin">Administrator Panel</p>
@@ -29,11 +29,11 @@ if (!isset($_SESSION['login'])) {
             <div id="menu-admin">
                 <a href="assinantes.php" class="cartao-admin">
                     <h2>Subscribers</h2>
-                    <p>View and remove newsletter subscribers</p>
+                    <p>View, add, edit and remove newsletter subscribers</p>
                 </a>
                 <a href="escolas.php" class="cartao-admin">
                     <h2>Schools of Thought</h2>
-                    <p>Add, edit, or remove philosophical schools</p>
+                    <p>View, add, edit and remove philosophical schools</p>
                 </a>
             </div>
 
