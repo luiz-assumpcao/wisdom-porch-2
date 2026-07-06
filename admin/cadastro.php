@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// Verifica se o usuário está logado, caso esteja redireciona para a página de painel.
 if (isset($_SESSION['login'])) {
     header('Location: painel.php');
     exit();

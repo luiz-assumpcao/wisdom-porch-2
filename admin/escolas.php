@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// Verifica se o usuário está logado, caso contrário redireciona para a página de login.
 if (!isset($_SESSION['login'])) {
     header('Location: login.php');
     exit();
@@ -42,9 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $descricaoEscapada = $conexao->real_escape_string($descricao);
 
                 if ($operacao === 'criar') {
+                    // INSERT: cadastra uma nova escola de pensamento no banco de dados.
                     $sql = "INSERT INTO escola (nome_escola, descricao) VALUES ('$nomeEscapado', '$descricaoEscapada')";
                 } else {
                     $idRegistroEscapado = $conexao->real_escape_string($idRegistro);
+                    // UPDATE: atualiza os dados de uma escola já existente.
                     $sql = "UPDATE escola SET nome_escola='$nomeEscapado', descricao='$descricaoEscapada' WHERE id='$idRegistroEscapado'";
                 }
                 $conexao->query($sql);
@@ -53,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     } elseif ($operacao === 'excluir') {
+        // DELETE: remove uma escola do banco de dados.
         $idEscapado = $conexao->real_escape_string($_POST['id'] ?? '');
         $conexao->query("DELETE FROM escola WHERE id='$idEscapado'");
         header('Location: escolas.php');
@@ -69,6 +73,7 @@ if (($acao === 'editar' || $acao === 'excluir') && $idSelecionado) {
 }
 
 if ($acao === 'listar') {
+    // SELECT: consulta e lista todas as escolas de pensamento cadastradas.
     $sql = "SELECT id, nome_escola, descricao FROM escola ORDER BY id";
     $resultado = $conexao->query($sql);
 }

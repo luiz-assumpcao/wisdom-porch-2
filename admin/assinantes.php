@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// Verifica se o usuário está logado, caso contrário redireciona para a página de login.
 if (!isset($_SESSION['login'])) {
     header('Location: login.php');
     exit();
@@ -65,10 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $idEscolaEscapado = $conexao->real_escape_string($idEscola);
 
                 if ($operacao === 'criar') {
+                    // INSERT: cadastra um novo assinante no banco de dados.
                     $sql = "INSERT INTO assinante (primeiro_nome, email, telefone, data_nascimento, id_escola)
                             VALUES ('$nomeEscapado', '$emailEscapado', '$telefoneEscapado', '$dataEscapada', '$idEscolaEscapado')";
                 } else {
                     $idRegistroEscapado = $conexao->real_escape_string($idRegistro);
+                    // UPDATE: atualiza os dados de um assinante já existente.
                     $sql = "UPDATE assinante SET primeiro_nome='$nomeEscapado', email='$emailEscapado',
                             telefone='$telefoneEscapado', data_nascimento='$dataEscapada', id_escola='$idEscolaEscapado'
                             WHERE id='$idRegistroEscapado'";
@@ -79,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     } elseif ($operacao === 'excluir') {
+        // DELETE: remove um assinante do banco de dados.
         $idEscapado = $conexao->real_escape_string($_POST['id'] ?? '');
         $conexao->query("DELETE FROM assinante WHERE id='$idEscapado'");
         header('Location: assinantes.php');
@@ -105,6 +109,7 @@ if ($acao === 'criar' || $acao === 'editar') {
 }
 
 if ($acao === 'listar') {
+    // SELECT: consulta e lista todos os assinantes cadastrados.
     $sql = "SELECT assinante.id, primeiro_nome, email, telefone, data_nascimento, nome_escola
             FROM assinante
             INNER JOIN escola ON assinante.id_escola = escola.id

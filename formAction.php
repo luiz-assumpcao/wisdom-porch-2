@@ -1,4 +1,7 @@
 <?php
+// Este arquivo exibe os dados recebidos do formulário de inscrição na newsletter.
+// Ele era mais útil quando o formulário era enviado para este arquivo, mas agora é enviado para ele mesmo em form.php.
+
 session_start();
 require 'bd/bd.php';
 
